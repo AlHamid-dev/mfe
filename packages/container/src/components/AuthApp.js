@@ -1,21 +1,22 @@
 import React, { useEffect, useRef } from "react";
-import { mount as mountMarketing } from 'marketingPage/MarketingApp'
+import { mount as mountAuth } from 'authPage/AuthApp'
 import { useHistory } from 'react-router-dom'
 
-export default () => {
+export default ({onSignIn}) => {
     const ref = useRef(null)
     const history = useHistory()
 
     useEffect(() => {
-        const { onParentNavigate } = mountMarketing(ref.current, {
+        const { onParentNavigate } = mountAuth(ref.current, {
             initialPath: history.location.pathname,
             onNavigate: ({ pathname: nextPathname }) => {
                 const { pathname } = history.location
+                console.log(nextPathname)
                 if (pathname !== nextPathname) {
                     history.push(nextPathname)
-                    console.log("The container noticed navigation in marketing")
                 }
-            }
+            },
+            onSignIn
         })
         history.listen(onParentNavigate)
     }, [])
