@@ -22,7 +22,8 @@ const devConfig = {
             remotes: {
                 // then name 'marketing' in the value matches with the name in the remote app module federation plugin
                 marketingPage: 'marketing@http://localhost:8081/remoteEntry.js',
-                authPage: 'auth@http://localhost:8082/remoteEntry.js'
+                authPage: 'auth@http://localhost:8082/remoteEntry.js',
+                dashboardPage: 'dashboard@http://localhost:8083/remoteEntry.js'
             },
             shared: packageJson.dependencies,
         }),
